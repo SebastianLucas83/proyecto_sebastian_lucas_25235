@@ -1,0 +1,66 @@
+@keyframes cambiar {
+    0% {margin-left: 0;}
+    30% {margin-left: 0;}
+    
+    35% {margin-left: -100%;} /*pasa a la segunda imagen detras*/
+    65% {margin-left: -100%;}
+    
+    70% {margin-left: -200%;}
+    100% {margin-left: -200%;}
+
+    }
+.tit{
+    display: contents!important;
+}
+
+ /*banner*/
+ .slider{
+    width: 100%;
+    overflow: hidden; /*oculta los elementos fuera*/
+}
+
+.slider ul{
+    display: flex;
+    padding: 0;
+    width: 300%;
+    background: rgba(245,245,245); 
+    animation: cambiar 20s infinite alternate linear;
+       
+}
+
+.slider li{
+    list-style: none;
+    width: 100%;
+    height: 5rem;
+}
+
+.slider img{
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+}
+.animacion{
+    margin-bottom: 0rem;
+}
+
+
+
+@media (max-width: 637px) {
+    .nav{
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .slider li{
+        height: 4rem;
+    }
+
+    .titulo{
+        font-size: 1rem !important;
+    }
+
+    .img_logo_footer{
+        width: 25px;
+    }
+}
