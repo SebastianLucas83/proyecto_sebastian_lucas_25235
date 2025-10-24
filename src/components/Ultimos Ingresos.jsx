@@ -1,13 +1,15 @@
 import React from 'react';
 import CardList from './CardList';
+import '../misEstilos.css';
 
 const UltimosIngresos = () => {
-  return (
+return (
+  <div >
+    <h1 className='titulo_destacado'>Ultimos Ingresos</h1>
     <div className="container">
-      <h1>Ultimos Ingresos</h1>
-      <CardList type="creature" />
+    <CardList type="creature" />
     </div>
-  );
+  </div>
+);
 };
-
 export default UltimosIngresos;

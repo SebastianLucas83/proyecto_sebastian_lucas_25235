@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 @keyframes cambiar {
     0% {margin-left: 0;}
     30% {margin-left: 0;}
@@ -43,6 +45,16 @@
     margin-bottom: 0rem;
 }
 
+/*titulo*/
+.titulo_destacado{
+    background-color: rgb(140 156 185);
+    padding: 0.5rem;
+    color: white;
+    border-top: 3px solid rgba(1, 135, 253, 0.369);
+    border-bottom: 3px solid rgba(1, 135, 253, 0.369);
+    font-family: 'Permanent Marker';
+    font-size: 1.5rem;
+}
 
 
 @media (max-width: 637px) {

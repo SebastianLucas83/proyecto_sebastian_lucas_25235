@@ -3,9 +3,11 @@ import CardList from './CardList';
 
 const Infaltables = () => {
   return (
-    <div className="container">
-      <h1>Infaltables</h1>
+    <div >
+      <h1 className='titulo_destacado'>Infaltables</h1>
+      <div className="container">
       <CardList type="vanguard" />
+      </div>
     </div>
   );
 };

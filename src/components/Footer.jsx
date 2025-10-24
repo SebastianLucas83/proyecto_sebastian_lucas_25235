@@ -21,7 +21,7 @@ const Footer = () => {
                         style={{ height: '20px', objectFit: 'cover' }} 
                       
                       />
-                      <span className='titulo me-2' style={{ color:'white', fontStyle: 'italic',fontWeight: 'bold', fontFamily: 'Hanalei Fill'}} >ARGCARD</span>
+                      <span className='titulo me-2' style={{ color:'white', fontFamily: 'Permanent Marker'}} >ARGCARD</span>
                        <img
                         src= {logo} 
                         alt="Logo"
