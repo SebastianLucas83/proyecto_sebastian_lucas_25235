@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button,  Badge  } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/images/logo.png'
 import banner from '../assets/images/01_banner_mp.png'
 import banner1 from '../assets/images/02_banner_ahora12.png'
 import banner2 from '../assets/images/03_banner_tarjetas.jpg'
+import { CartContext } from './CartContext';
 import '../misEstilos.css';
 
 const Header = () => {
+    const { carrito } = useContext(CartContext);
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
   return (
     <div className='pb-2'>
     <Navbar  bg="secondary" variant="dark" expand="lg" className=" pb-4 px-4 justify-content-center">
@@ -42,8 +45,13 @@ const Header = () => {
             <Button variant="outline-light" as={Link} to="/administracion" className="me-2">
               Administración
             </Button>
-            <Link to="/carrito" className="text-white">
+            <Link to="/carrito" className="text-white position-relative">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+              {totalItems > 0 && (
+                <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+                  {totalItems}
+                </Badge>
+              )}
             </Link>
           </div>
         </Nav>

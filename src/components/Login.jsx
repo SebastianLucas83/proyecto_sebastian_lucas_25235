@@ -2,23 +2,25 @@ import React from 'react';
 import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useAuth } from './AuthContext';
 
 const Login = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = e => {
     e.preventDefault();
-    
-    //alerta login exitoso
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: `Login Realizado con EXITO!!!`,
-      showConfirmButton: false,
-      timer: 1500
-    }).then((result) => {
-      // Finalizada la alerta se redirecciona a HOME
-      navigate('/');
-    });
+    const success = login(username, password);
+    if (success) {
+      navigate('/dashboard');
+    } else {
+      setError('Usuario o contraseña incorrectos');
+    }
   };
 
   return (
@@ -31,17 +33,19 @@ const Login = () => {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formUsername">
                   <Form.Label>Usuario</Form.Label>
-                  <Form.Control type="text" placeholder="Ingrese su usuario" required />
+                  <Form.Control type="text" value={username}
+                   onChange={e => setUsername(e.target.value)} placeholder="Ingrese su usuario" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formPassword">
                   <Form.Label>Contraseña</Form.Label>
-                  <Form.Control type="password" placeholder="Ingrese su contraseña" required />
+                  <Form.Control type="password" value={password}
+            onChange={e => setPassword(e.target.value)} placeholder="Ingrese su contraseña" required />
                 </Form.Group>
-
                 <Button variant="primary" type="submit" className="w-100">
                   Ingresar
                 </Button>
+                {error && <div className="alert alert-danger mt-3">{error}</div>}
               </Form>
             </Card.Body>
           </Card>

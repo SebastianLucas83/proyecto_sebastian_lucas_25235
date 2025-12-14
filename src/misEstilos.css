@@ -54,12 +54,22 @@
     border-bottom: 3px solid rgba(1, 135, 253, 0.369);
     font-family: 'Permanent Marker';
     font-size: 1.5rem;
+   
 }
 
 
 @media (max-width: 637px) {
     .nav{
         margin-left: 0 !important;
+    }
+
+    .btn-crud{
+        display: block !important;
+         text-align: center !important;
+    }
+    .btn-warning-crud{
+        margin: 0 !important;
+        margin-bottom: 4px !important;
     }
 }
 

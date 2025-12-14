@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import miImagen from '../assets/images/sinImagen.png'
-
+ //import { CartContext } from './CartContext';
 const ProductCard = ({ card, agregarAlCarrito }) => {
 
   //validacion si la imagen no existe
@@ -32,7 +32,7 @@ const ProductCard = ({ card, agregarAlCarrito }) => {
           {card.text.slice(0, 100)}...
         </Card.Text>
         <Card.Text className='text-center'>
-          <strong>$800</strong>
+          800
         </Card.Text>
         <Button variant="primary" onClick={() => agregarAlCarrito(card)}>
           Agregar al carrito

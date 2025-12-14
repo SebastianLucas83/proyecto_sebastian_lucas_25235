@@ -1,28 +1,25 @@
 import React, { useEffect, useState , useContext} from 'react';
 import { Row, Col } from 'react-bootstrap';
-import ProductCard from './ProductCard';
+import ProductHome from './ProductHome';
 import Swal from "sweetalert2";
 import { CartContext } from './CartContext';
 
 const ProductList = ({ type = null }) => 
     {
-  const [cards, setCards] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { agregarAlCarrito } = useContext(CartContext);
- 
+
+
     useEffect(() => 
     {
-    let url = 'https://api.magicthegathering.io/v1/cards';
-    if (type) 
-    {
-      url = `https://api.magicthegathering.io/v1/cards?types=${type}`;
-    }
+    let url = 'https://693dcaf5f55f1be79303b682.mockapi.io/Products';
 
       fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setCards(data.cards.slice(0, 12));
-        //console.log(data.cards)
+        setProducts(data);
+        //console.log(data)
         setLoading(false);
       })
   
@@ -30,8 +27,7 @@ const ProductList = ({ type = null }) =>
         console.error('Error fetching data:', error);
         setLoading(false);
       });
-  }, [type]);
-
+  });
 
 
   if (loading) {
@@ -41,9 +37,9 @@ const ProductList = ({ type = null }) =>
   
   return (
     <Row>
-      {cards.map((card) => (
-        <Col md={4} key={card.code} className="mb-4">
-          <ProductCard card={card} agregarAlCarrito={agregarAlCarrito} />
+      {products.map((product) => (
+        <Col md={4} key={product.id} className="mb-4">
+          <ProductHome product={product} agregarAlCarrito={agregarAlCarrito}  />
         </Col>
       ))}
     </Row>
